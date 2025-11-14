@@ -1,11 +1,11 @@
 
 import React, { useState, useCallback } from 'react';
-import type { Status, AppMode, LedgerAccount, PdfDocumentType } from './types';
-import { ExcelProcessor } from './components/ExcelProcessor';
-import { PdfProcessor } from './components/PdfProcessor';
-import { ChartOfAccountsManager } from './components/ChartOfAccountsManager';
+import type { Status, AppMode, LedgerAccount, PdfDocumentType } from './journal-types';
+import { ExcelProcessor } from './journal-components/ExcelProcessor';
+import { PdfProcessor } from './journal-components/PdfProcessor';
+import { ChartOfAccountsManager } from './journal-components/ChartOfAccountsManager';
 
-const App: React.FC = () => {
+export const JournalApp: React.FC = () => {
   const [status, setStatus] = useState<Status>({ message: '', type: 'info' });
   const [appMode, setAppMode] = useState<AppMode>('excel');
   const [chartOfAccounts, setChartOfAccounts] = useState<LedgerAccount[]>([]);
@@ -101,5 +101,3 @@ const App: React.FC = () => {
     </div>
   );
 };
-
-export default App;
