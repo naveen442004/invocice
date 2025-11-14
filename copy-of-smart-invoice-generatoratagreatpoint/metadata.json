@@ -1,0 +1,5 @@
+{
+  "name": "Copy of Smart Invoice Generator",
+  "description": "An intelligent invoice creation tool that automates data entry from GSTIN, calculates taxes based on state, and saves data directly to Google Sheets. Supports dynamic item and expense additions for flexible invoicing.",
+  "requestFramePermissions": []
+}
