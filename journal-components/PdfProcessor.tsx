@@ -1,10 +1,10 @@
 
 import React, { useState, useCallback, useEffect } from 'react';
 // FIX: Import 'RawRow' to resolve 'Cannot find name' error.
-import type { Status, LedgerAccount, FileState, VoucherType, AppConfigs, LedgerEntry, Stats, NameMappingResult, RawRow } from '../types';
-import { extractDataFromDocument, matchAndSuggestLedgers, autoMapSalesPurchase, autoMapJournal, autoMapBankStatement } from '../services/geminiService';
-import { exportToExcel } from '../services/excelService';
-import { convertDataToLedger } from '../services/conversionService';
+import type { Status, LedgerAccount, FileState, VoucherType, AppConfigs, LedgerEntry, Stats, NameMappingResult, RawRow } from '../journal-types';
+import { extractDataFromDocument, matchAndSuggestLedgers, autoMapSalesPurchase, autoMapJournal, autoMapBankStatement } from '../journal-services/geminiService';
+import { exportToExcel } from '../journal-services/excelService';
+import { convertDataToLedger } from '../journal-services/conversionService';
 import { PDF_PROCESSING_TIPS } from '../constants';
 import { SuggestionsPanel } from './SuggestionsPanel';
 import { ConfigPanel } from './ConfigPanel';

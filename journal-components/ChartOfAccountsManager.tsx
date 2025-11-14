@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { extractLedgersFromDocument } from '../services/geminiService';
-import type { LedgerAccount } from '../types';
+import { extractLedgersFromDocument } from '../journal-services/geminiService';
+import type { LedgerAccount } from '../journal-types';
 
 interface ChartOfAccountsManagerProps {
   onChartOfAccountsLoad: (accounts: LedgerAccount[]) => void;

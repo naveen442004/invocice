@@ -1,8 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import type { RawRow, FileState, Status, VoucherType, LedgerEntry, Stats, AppConfigs, LedgerAccount, NameMappingResult } from '../types';
-import { getExcelSheetNames, parseExcelFile, exportToExcel } from '../services/excelService';
-import { convertDataToLedger } from '../services/conversionService';
-import { autoMapSalesPurchase, autoMapJournal, autoMapBankStatement, matchAndSuggestLedgers } from '../services/geminiService';
+import type { RawRow, FileState, Status, VoucherType, LedgerEntry, Stats, AppConfigs, LedgerAccount, NameMappingResult } from '../journal-types';
+import { getExcelSheetNames, parseExcelFile, exportToExcel } from '../journal-services/excelService';
+import { convertDataToLedger } from '../journal-services/conversionService';
+import { autoMapSalesPurchase, autoMapJournal, autoMapBankStatement, matchAndSuggestLedgers } from '../journal-services/geminiService';
 import { FileUpload } from './FileUpload';
 import { ConfigPanel } from './ConfigPanel';
 import { PreviewPanel } from './PreviewPanel';
