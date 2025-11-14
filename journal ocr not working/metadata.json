@@ -1,0 +1,5 @@
+{
+  "name": "GST Voucher Converter Pro",
+  "description": "An advanced tool to convert flat Excel files (Sales, Purchase, or Journal vouchers) into a detailed ledger format suitable for import into accounting software. Features intelligent column mapping and configurable ledger names for maximum flexibility.",
+  "requestFramePermissions": []
+}
