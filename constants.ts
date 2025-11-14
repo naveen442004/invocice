@@ -1,5 +1,5 @@
 
-import type { AppConfigs, VoucherType, FieldDefinition } from './types';
+import type { AppConfigs, VoucherType, FieldDefinition } from './journal-types';
 
 // Provides a default starting configuration for the application state.
 export const DEFAULT_CONFIGS: AppConfigs = {

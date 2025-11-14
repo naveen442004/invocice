@@ -1,51 +1,79 @@
-# Smart Invoice Generator
+# Business Management Suite
 
 ## Overview
-A React-based invoice generation application that allows users to create, manage, and track invoices. The application features user authentication, company management, and detailed invoice creation with GST calculations.
+A comprehensive business management application combining invoice generation and document processing capabilities. This unified suite allows users to create invoices with GST calculations and process various financial documents using AI-powered OCR.
+
+## Combined Features
+
+### 1. Smart Invoice Generator
+- User authentication (login/register)
+- Company management
+- Invoice creation with GST calculations (CGST/SGST/IGST)
+- Expense tracking
+- Session-based state management
+- Backend: Google Apps Script
+
+### 2. GST Voucher Converter Pro
+- Excel import for converting flat files into ledger format
+- PDF processing with AI/OCR for:
+  - Bank statements
+  - Sales invoices
+  - Purchase invoices
+  - Journal vouchers
+- Chart of Accounts management
+- Gemini AI integration for document extraction
 
 ## Tech Stack
 - **Frontend**: React 19.2.0 + TypeScript
 - **Build Tool**: Vite 6.2.0
-- **Styling**: Tailwind CSS (via CDN)
-- **Backend**: Google Apps Script (external service)
+- **Styling**: Tailwind CSS (via CDN) with custom theme
+- **AI/OCR**: Google Gemini AI (@google/genai)
+- **Backend**: Google Apps Script (for invoices)
 
 ## Project Structure
 ```
-├── components/           # React components
-│   ├── Login.tsx        # User authentication
-│   ├── CompanySelect.tsx # Company selection
-│   ├── InvoiceForm.tsx  # Main invoice creation form
-│   ├── InvoiceSummary.tsx # Invoice summary display
-│   ├── InvoiceItemRow.tsx # Individual invoice items
-│   └── ExpenseLedgerRow.tsx # Expense entries
-├── services/            # API service layer
-│   ├── apiService.ts    # Main API service (Google Apps Script)
-│   ├── authService.ts   # Authentication service
-│   ├── gheeService.ts   # Business logic for ghee
-│   └── gstService.ts    # GST calculation service
-├── App.tsx             # Main application component
-├── index.tsx           # Application entry point
-├── types.ts            # TypeScript type definitions
-└── vite.config.ts      # Vite configuration
-
+├── components/              # Invoice generator components
+│   ├── Login.tsx
+│   ├── CompanySelect.tsx
+│   ├── InvoiceForm.tsx
+│   ├── InvoiceSummary.tsx
+│   ├── InvoiceItemRow.tsx
+│   └── ExpenseLedgerRow.tsx
+├── journal-components/      # Voucher converter components
+│   ├── ChartOfAccountsManager.tsx
+│   ├── ExcelProcessor.tsx
+│   ├── PdfProcessor.tsx
+│   ├── FileUpload.tsx
+│   ├── EditableDataTable.tsx
+│   ├── PreviewPanel.tsx
+│   ├── SuggestionsPanel.tsx
+│   └── ConfigPanel.tsx
+├── services/                # Invoice services
+│   ├── apiService.ts        # Google Apps Script integration
+│   ├── authService.ts
+│   ├── gheeService.ts
+│   └── gstService.ts
+├── journal-services/        # Voucher converter services
+├── App.tsx                  # Main app with navigation
+├── InvoiceApp.tsx          # Invoice generator app
+├── JournalApp.tsx          # Voucher converter app
+├── types.ts                # Invoice type definitions
+├── journal-types.ts        # Voucher converter types
+├── constants.ts            # Voucher converter constants
+└── vite.config.ts          # Vite configuration
 ```
 
-## Key Features
-- User authentication (login/register)
-- Company management
-- Invoice creation with:
-  - Multiple invoice items
-  - Discount calculations
-  - GST calculations (CGST/SGST/IGST)
-  - Expense tracking
-- Session-based state management
+## Navigation
+The application features a top navigation bar allowing users to switch between:
+- **Invoice Generator** - For creating and managing invoices
+- **Voucher Converter** - For processing documents with AI/OCR
 
 ## Configuration
-The application is configured to run on port 5000 in development and production.
+The application is configured to run on port 5000 in both development and production.
 
 ### Development
 - Port: 5000
-- Host: 0.0.0.0 (to work with Replit's proxy)
+- Host: 0.0.0.0 (configured for Replit's proxy)
 - HMR: Configured for Replit environment
 
 ### Deployment
@@ -53,30 +81,42 @@ The application is configured to run on port 5000 in development and production.
 - Build: `npm run build`
 - Run: Vite preview server on port 5000
 
-## Backend Integration
-The app uses Google Apps Script as a backend service. The script URL is configured in `services/apiService.ts`:
+## Backend Integrations
+
+### Invoice Generator Backend
+Google Apps Script endpoint:
 ```
 https://script.google.com/macros/s/AKfycbyjBwBcOJHA-2J5I-SIe_Guyms6S2RpB5k7wPDR1Iz2T8P8-XcZF34Dr9Cv19ygnpWp/exec
 ```
 
+### Voucher Converter Backend
+Uses Google Gemini AI for OCR and document processing
+- Requires `GEMINI_API_KEY` environment variable
+
 ## Environment Variables
-- `GEMINI_API_KEY`: Configured in vite.config.ts but not currently used in the application
+- `GEMINI_API_KEY`: **Required** for document OCR and AI processing features in the Voucher Converter
+
+## Theme Support
+The application includes a custom theme with:
+- Light and dark mode support (follows system preference)
+- Custom color scheme using CSS variables
+- Consistent styling across both apps
 
 ## Recent Changes (Nov 14, 2024)
-- Imported from GitHub repository
-- Moved all files to project root
-- Updated Vite configuration for Replit environment:
-  - Changed port from 3000 to 5000
-  - Configured HMR for Replit proxy
-  - Fixed module resolution for TypeScript
-- Added .gitignore for Node.js projects
-- Set up development workflow on port 5000
-- Configured deployment for autoscale
+- Combined two projects: Smart Invoice Generator + GST Voucher Converter Pro
+- Created unified navigation system
+- Integrated @google/genai for AI/OCR capabilities
+- Added custom theming with dark mode support
+- Organized components into separate directories
+- Updated all import paths for new structure
+- Configured for Replit environment (port 5000, HMR settings)
+- Set up deployment configuration
 
 ## Running the App
-The development server is already configured and running. Any changes to the code will automatically reload in the browser.
+The development server is configured and running on port 5000. Use the navigation bar to switch between Invoice Generator and Voucher Converter features.
 
 ## Notes
-- The app uses Tailwind CSS via CDN (not recommended for production)
-- Session storage is used for authentication state
-- All invoice data is stored via Google Apps Script backend
+- The app uses Tailwind CSS via CDN (not recommended for production, but works for prototyping)
+- Invoice data is stored via Google Apps Script backend
+- Voucher converter processes documents locally using Gemini AI
+- Both apps share the same session and can be used interchangeably
